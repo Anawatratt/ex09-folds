@@ -1,0 +1,21 @@
+1.)rewrite list reverse using left fold
+reverseLeft :: [a] -> [a]
+reverseLeft = foldl (\acc x -> x : acc) []
+
+2.)rewrite list reverse using right fold
+reverseRight :: [a] -> [a]
+reverseRight = foldr (\x acc -> acc ++ [x]) []
+
+3.)which version is more efficient, and why?
+The left fold version is more efficient because prepending to the front of the list is an O(1) operation,
+ where appending (as in the right fold version) is an O(n) operation
+
+4.)rewrite map using fold
+mapFold :: (a -> b) -> [a] -> [b]
+mapFold f = reverse . foldl (\acc x -> f x : acc) []
+
+
+5.)rewrite filter using fold
+filterFold :: (a -> Bool) -> [a] -> [a]
+filterFold p = foldl (\acc x -> if p x then x : acc else acc) []
+
